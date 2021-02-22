@@ -45,10 +45,10 @@ export default function Item(props) {
 
       {/* 👉 STEP 9 - Here go the Routes for `<current path>/shipping` and `<current path>/description` */}
       {/* These Routes should render <ItemDetails /> */}
-      <Route path="/items-list/:itemID/shipping">
+      <Route path={`${path}/shipping`}>
         <ItemDetails text={item.shipping} />
       </Route>
-      <Route path="/items-list/:itemID/description">
+      <Route path={`${path}/description`}>
         <ItemDetails text={item.description} />
       </Route>
 
