@@ -23,6 +23,8 @@ export default function Item(props) {
     return item.id == itemID
   }) 
 
+  if (!items.length) return 'Getting item... please wait'
+
   return (
     <div className='item-wrapper'>
       <div className='item-header'>
