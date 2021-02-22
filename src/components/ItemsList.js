@@ -8,6 +8,7 @@ export default function ItemsList(props) {
   const { url, path } = useRouteMatch()
 
   console.log('url from hook', url);
+  console.log('path from hook', path);
 
   // We'll grab the current URL using the hook
 
