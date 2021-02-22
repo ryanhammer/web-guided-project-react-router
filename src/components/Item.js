@@ -46,7 +46,7 @@ export default function Item(props) {
       {/* 👉 STEP 9 - Here go the Routes for `<current path>/shipping` and `<current path>/description` */}
       {/* These Routes should render <ItemDetails /> */}
       <Switch>
-        <Route path={`${path}/shipping`}>
+        <Route path={`${url}/shipping`}>
           <ItemDetails text={item.shipping} />
         </Route>
         <Route path={`${path}/description`}>
