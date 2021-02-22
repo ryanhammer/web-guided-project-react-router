@@ -4,7 +4,7 @@ import {useParams} from 'react-router-dom'
 export default function ItemDetails(props) {
   const { text } = props
   const {itemID} = useParams()
-  console.log(itemID);
+  console.log('itemID in itemDetails', itemID);
 
   return (
     <div>
