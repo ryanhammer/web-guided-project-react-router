@@ -1,6 +1,6 @@
 import React from 'react'
 // We'll need quite a few imports from react-router-dom
-
+import { NavLink, useParams, useRouteMatch, Route } from 'react-router-dom';
 import ItemDetails from './ItemDetails'
 
 export default function Item(props) {
@@ -11,7 +11,13 @@ export default function Item(props) {
   // Beware! The ids are integers, whereas URL parameters are strings.
   // Beware! The JSX is expecting 'item' to exist instantly!
   // we use this hook to grab they dynamic parts of the path (:itemID).
-  const item = {}
+
+  const {itemID} = useParams();
+  const { url, path } = useRouteMatch();
+
+  const item = items.find(item => {
+    return item.id == itemID;
+  }) || {};
 
   return (
     <div className='item-wrapper'>
@@ -27,10 +33,18 @@ export default function Item(props) {
 
       <nav className='item-sub-nav'>
         {/* 👉 STEP 8 - Here go the NavLinks to `<current url>/shipping` and `<current url>/description` */}
+        <NavLink to={`${url}/description`}>Description</NavLink>
+        <NavLink to={`${url}/shipping`}>Shipping</NavLink>
       </nav>
 
       {/* 👉 STEP 9 - Here go the Routes for `<current path>/shipping` and `<current path>/description` */}
       {/* These Routes should render <ItemDetails /> */}
+      <Route path={`${url}/description`}>
+        <ItemDetails text={item.description}/>
+      </Route>
+      <Route path={`${url}/shipping`}>
+        <ItemDetails text={item.shipping}/>
+      </Route>
 
       {/* 👉 STEP 10 - Shorten paths and urls with `useRouteMatch` hook */}
     </div>
